@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		411947B01EFCE709000228FB /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411947AF1EFCE709000228FB /* CustomView.swift */; };
+		41B603161F022FA00040BF44 /* TrigonometricFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B603151F022FA00040BF44 /* TrigonometricFunctions.swift */; };
 		41CA5A361EFC5C420083D561 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CA5A351EFC5C420083D561 /* AppDelegate.swift */; };
 		41CA5A381EFC5C420083D561 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CA5A371EFC5C420083D561 /* ViewController.swift */; };
 		41CA5A3B1EFC5C420083D561 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41CA5A391EFC5C420083D561 /* Main.storyboard */; };
@@ -65,6 +67,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		411947AF1EFCE709000228FB /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		41B603151F022FA00040BF44 /* TrigonometricFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrigonometricFunctions.swift; sourceTree = "<group>"; };
 		41CA5A321EFC5C420083D561 /* PoCDemoFriday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PoCDemoFriday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41CA5A351EFC5C420083D561 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41CA5A371EFC5C420083D561 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +103,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		411947AC1EFCE6AF000228FB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				411947AF1EFCE709000228FB /* CustomView.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		41CA5A291EFC5C420083D561 = {
 			isa = PBXGroup;
 			children = (
@@ -121,8 +133,10 @@
 		41CA5A341EFC5C420083D561 /* PoCDemoFriday */ = {
 			isa = PBXGroup;
 			children = (
+				411947AC1EFCE6AF000228FB /* Extensions */,
 				41CA5A351EFC5C420083D561 /* AppDelegate.swift */,
 				41CA5A371EFC5C420083D561 /* ViewController.swift */,
+				41B603151F022FA00040BF44 /* TrigonometricFunctions.swift */,
 				41FD90E71EFC65F20013701A /* AppColors.swift */,
 				41FD90E51EFC65980013701A /* TotalExpensesViewController.swift */,
 				41CA5A391EFC5C420083D561 /* Main.storyboard */,
@@ -203,6 +217,7 @@
 				TargetAttributes = {
 					41CA5A311EFC5C420083D561 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = D6HFW4NVW3;
 						ProvisioningStyle = Automatic;
 					};
 					41CA5A451EFC5C420083D561 = {
@@ -279,6 +294,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41B603161F022FA00040BF44 /* TrigonometricFunctions.swift in Sources */,
+				411947B01EFCE709000228FB /* CustomView.swift in Sources */,
 				41CA5A381EFC5C420083D561 /* ViewController.swift in Sources */,
 				41FD90E81EFC65F20013701A /* AppColors.swift in Sources */,
 				41CA5A361EFC5C420083D561 /* AppDelegate.swift in Sources */,
@@ -429,6 +446,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = D6HFW4NVW3;
 				INFOPLIST_FILE = PoCDemoFriday/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = bbva.PoCDemoFriday;
@@ -442,6 +460,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = D6HFW4NVW3;
 				INFOPLIST_FILE = PoCDemoFriday/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = bbva.PoCDemoFriday;
