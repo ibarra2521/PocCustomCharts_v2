@@ -26,6 +26,7 @@ class TotalExpensesViewController: UIViewController {
     @IBOutlet weak var lineChartView: LineChartView!
     @IBOutlet weak var shadow: UIView!
     @IBOutlet weak var moneyLabel: UILabel!
+    @IBOutlet weak var circleCustom: CustomCircle!
     
     // MARK: - Variables
     @IBOutlet weak var container: UIView!
@@ -47,6 +48,7 @@ class TotalExpensesViewController: UIViewController {
     var moneyTempToDeleteAfter = 10
     var constraintDown2: CGFloat = 70
     var heightLine: CGFloat = 0.0
+    let trigonometry = TrigonometricFunctions()
     
     //Tmp
     let tmpStart = 30.5
@@ -63,8 +65,8 @@ class TotalExpensesViewController: UIViewController {
     }
     
     func initialize() {
-        self.setCustomLine()
-        self.lineChartView.animate(xAxisDuration: 0.0, yAxisDuration: 1.0)
+//        self.setCustomLine()
+//        self.lineChartView.animate(xAxisDuration: 0.0, yAxisDuration: 1.0)
         self.customView()
         
         self.halfHeighCircle = self.circle1.frame.height / 2
@@ -74,9 +76,10 @@ class TotalExpensesViewController: UIViewController {
         self.yAxesYCircle1 = self.container.bounds.maxY - self.halfHeighCircle - self.constraintDown
         self.yAxesYCircle2 = self.container.bounds.maxY - 77
         self.circle1.center = CGPoint(x: self.limitXOrigin, y: self.yAxesYCircle1)
-        self.circle2.center = CGPoint(x: self.limitXOrigin, y: self.yAxesYCircle2) //CGPoint(x: self.limitXOrigin, y: self.yAxesYCircle2)
+        //self.circle2.center = CGPoint(x: self.limitXOrigin, y: self.yAxesYCircle2) //CGPoint(x: self.limitXOrigin, y: self.yAxesYCircle2)
+        self.circleCustom.center = CGPoint(x: self.limitXOrigin, y: self.yAxesYCircle2)
         self.heightLine = self.line.frame.height
-        self.line.center = CGPoint(x: self.limitXOrigin, y: self.yAxesYCircle2 + 24)
+        self.line.center = CGPoint(x: self.limitXOrigin, y: self.yAxesYCircle2 + 27)
     }
     
     func setCustomLine() {
@@ -175,12 +178,12 @@ class TotalExpensesViewController: UIViewController {
             self.circle1.center = tmpLocation
             
             let locationY = getLocationYCircle2(locationX: location.x)
-            self.yAxesYCircle2 = (self.container.bounds.maxY - self.constraintDown2) - locationY //77
+            self.yAxesYCircle2 = (self.container.bounds.maxY - self.constraintDown2) - locationY.locationY //77
             
         
-            self.drawCircleTwo(xAxes: self.location.x, yAxes: self.yAxesYCircle2)
+            self.drawCircleTwo(xAxes: self.location.x, yAxes: self.yAxesYCircle2, angle: locationY.angle)
             //self.drawCircleTwo(xAxes: self.location.x, yAxes: self.yAxesYCircle2)
-            self.drawLine(xAxes: self.location.x, yAxes: self.yAxesYCircle2, height: locationY)
+            self.drawLine(xAxes: self.location.x, yAxes: self.yAxesYCircle2, height: locationY.locationY)
         } else {
             if self.direcion == .left {
                 let tmpLocation = CGPoint(x: self.limitXOrigin, y: self.yAxesYCircle1)
@@ -189,7 +192,7 @@ class TotalExpensesViewController: UIViewController {
                 //let locationY = getLocationYCircle2(locationX: location.x)
                 //self.yAxesYCircle2 = (self.container.bounds.maxY - self.constraintDown2) - locationY
                 
-                self.drawCircleTwo(xAxes: self.limitXOrigin, yAxes: self.yAxesYCircle2)
+                self.drawCircleTwo(xAxes: self.limitXOrigin, yAxes: self.yAxesYCircle2, angle: 0.0)
                 self.drawLine(xAxes: self.limitXOrigin, yAxes: self.yAxesYCircle2, height: 0.0)
             } else {
                 let tmpLocation = CGPoint(x: self.limitXEnd, y: self.yAxesYCircle1)
@@ -198,8 +201,8 @@ class TotalExpensesViewController: UIViewController {
 //                let locationY = getLocationYCircle2(locationX: location.x)
 //                self.yAxesYCircle2 = (self.container.bounds.maxY - self.constraintDown2) - locationY
 
-                self.drawCircleTwo(xAxes: self.limitXEnd, yAxes: self.yAxesYCircle2)
-                self.drawLine(xAxes: self.limitXEnd, yAxes: self.yAxesYCircle2, height: self.yAxesYCircle2 + 100)
+                self.drawCircleTwo(xAxes: self.limitXEnd, yAxes: self.yAxesYCircle2, angle: 0.0)
+                self.drawLine(xAxes: self.limitXEnd, yAxes: self.yAxesYCircle2, height: self.yAxesYCircle2 + 95)
             }
         }
         self.updateLabelMoney(amount: "")
@@ -221,8 +224,17 @@ class TotalExpensesViewController: UIViewController {
     }
     
     // MARK: -  Draw circle two
-    func drawCircleTwo(xAxes: CGFloat, yAxes: CGFloat) {
-        self.circle2.center = CGPoint(x: xAxes, y: yAxes)
+    func drawCircleTwo(xAxes: CGFloat, yAxes: CGFloat, angle: CGFloat) {
+        //self.circle2.center = CGPoint(x: xAxes, y: yAxes)
+        print("Angle: \(angle)")
+        let angles = self.trigonometry.getAnglesStartAndEnd(angle: angle)
+        if xAxes >= 20 && xAxes <= 317 {
+            self.circleCustom.drawParticalCircle(angleStart: Double(angles.start), angleEnd: Double(angles.end))
+            self.circleCustom.center = CGPoint(x: xAxes, y: yAxes)
+        } else if xAxes < 20 || xAxes > 317 {
+            self.circleCustom.drawParticalCircle(angleStart: Double(0), angleEnd: Double(360))
+        }
+        self.circleCustom.center = CGPoint(x: xAxes, y: yAxes)
     }
     
     func drawLine(xAxes: CGFloat, yAxes: CGFloat, height: CGFloat) {
@@ -237,55 +249,49 @@ class TotalExpensesViewController: UIViewController {
         self.moneyLabel.text = "\(self.moneyTempToDeleteAfter)"//amount
     }
     
-    func getLocationYCircle2(locationX: CGFloat) -> CGFloat {
+    func getLocationYCircle2(locationX: CGFloat) -> (locationY: CGFloat, angle: CGFloat) {
         print("getLocationYCircle2 ... \(locationX)")
         let segmentNumber = self.getSegment(valueX: Double(locationX))
         let indexesArray = self.getIndexFromArray(segment: segmentNumber)
         let inclination = self.getInclinationAngle(indexStart: indexesArray.indexStart, indexEnd: indexesArray.IndexEnd)
         //        if inclination == .inclination { // Funcion TODO: Positive or negative
         if locationX >= 55 && locationX < 100 {
-            return 27.0
+            return (27.0, 180)
         } else if locationX >= 100 && locationX < 140 {
-            let trigonometry = TrigonometricFunctions()
+//            let trigonometry = TrigonometricFunctions()
             let hypotenuse = trigonometry.getHypotenuse(cathetusOpposite: 25, cathetusAdjacent: 45) //  45, 21
             let angle = trigonometry.getAngleSin(cathetusOpposite: 25, hypotenuse: CGFloat(hypotenuse))
             let yAxex2 = trigonometry.getCathetusOpposite(cathetusAdjacent: locationX, coTangent: CGFloat(angle))
-            return CGFloat(yAxex2 - 28)
+            return (CGFloat(yAxex2 - 28), CGFloat(angle))
         } else if (locationX >= 140 && locationX < 240) {
-            return 52.0
+            return (52.0, 180)
         } else if (locationX >= 240 && locationX < 285) {
-            let trigonometry = TrigonometricFunctions()
+//            let trigonometry = TrigonometricFunctions()
             let hypotenuse = trigonometry.getHypotenuse(cathetusOpposite: 17, cathetusAdjacent: 45) //  45, 21
             let angle = trigonometry.getAngleSin(cathetusOpposite: 17, hypotenuse: CGFloat(hypotenuse))
             let yAxex2 = trigonometry.getCathetusOpposite(cathetusAdjacent: locationX, coTangent: CGFloat(angle))
-            return CGFloat(yAxex2 - 38)
+            return (CGFloat(yAxex2 - 38), CGFloat(angle))
         } else if (locationX > 285 && locationX < 325)  {
-            let trigonometry = TrigonometricFunctions()
+//            let trigonometry = TrigonometricFunctions()
             let hypotenuse = trigonometry.getHypotenuse(cathetusOpposite: 93, cathetusAdjacent: 45) //  45, 21
             let angle = trigonometry.getAngleSin(cathetusOpposite: 93, hypotenuse: CGFloat(hypotenuse))
             let yAxex2 = trigonometry.getCathetusOpposite(cathetusAdjacent: locationX, coTangent: CGFloat(angle))
-            return CGFloat(yAxex2 - 508) // 208
+            return (CGFloat(yAxex2 - 508), CGFloat(angle)) // 208
         } else {
-            let trigonometry = TrigonometricFunctions()
+//            let trigonometry = TrigonometricFunctions()
             let hypotenuse = trigonometry.getHypotenuse(cathetusOpposite: 21, cathetusAdjacent: 45) //  45, 21
             //        print("hypotenuse: \(hypotenuse)")
             let angle = trigonometry.getAngleSin(cathetusOpposite: 21, hypotenuse: CGFloat(hypotenuse))
             //        print("angle: \(angle)")
             let yAxex2 = trigonometry.getCathetusOpposite(cathetusAdjacent: locationX, coTangent: CGFloat(angle))
             //        print("yAxex2 Return: \(yAxex2)")
-            return CGFloat(yAxex2)
+            return (CGFloat(yAxex2), CGFloat(angle))
             //        } else {
             //            return 50// - 77 - CGFloat(self.yAxes[indexesArray.indexStart])
             //            //return CGFloat(self.yAxes[indexesArray.IndexEnd])
             //            //return 150.0
             //        }
-        
         }
-        
-        
-        
-        
-        
     }
     
     func getInclinationAngle(indexStart: Int, indexEnd: Int) -> Inclination {

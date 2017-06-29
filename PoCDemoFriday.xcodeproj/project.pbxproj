@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		411947B01EFCE709000228FB /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411947AF1EFCE709000228FB /* CustomView.swift */; };
+		411EDE451F0405DF008200B1 /* LineChart3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411EDE441F0405DF008200B1 /* LineChart3D.swift */; };
+		411EDE471F043990008200B1 /* CustomCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411EDE461F043990008200B1 /* CustomCircle.swift */; };
 		41B603161F022FA00040BF44 /* TrigonometricFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B603151F022FA00040BF44 /* TrigonometricFunctions.swift */; };
 		41CA5A361EFC5C420083D561 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CA5A351EFC5C420083D561 /* AppDelegate.swift */; };
 		41CA5A381EFC5C420083D561 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CA5A371EFC5C420083D561 /* ViewController.swift */; };
@@ -68,6 +70,8 @@
 
 /* Begin PBXFileReference section */
 		411947AF1EFCE709000228FB /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		411EDE441F0405DF008200B1 /* LineChart3D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart3D.swift; sourceTree = "<group>"; };
+		411EDE461F043990008200B1 /* CustomCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCircle.swift; sourceTree = "<group>"; };
 		41B603151F022FA00040BF44 /* TrigonometricFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrigonometricFunctions.swift; sourceTree = "<group>"; };
 		41CA5A321EFC5C420083D561 /* PoCDemoFriday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PoCDemoFriday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41CA5A351EFC5C420083D561 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +115,15 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		411EDE431F0405C3008200B1 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				411EDE441F0405DF008200B1 /* LineChart3D.swift */,
+				411EDE461F043990008200B1 /* CustomCircle.swift */,
+			);
+			name = CustomViews;
+			sourceTree = "<group>";
+		};
 		41CA5A291EFC5C420083D561 = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +146,7 @@
 		41CA5A341EFC5C420083D561 /* PoCDemoFriday */ = {
 			isa = PBXGroup;
 			children = (
+				411EDE431F0405C3008200B1 /* CustomViews */,
 				411947AC1EFCE6AF000228FB /* Extensions */,
 				41CA5A351EFC5C420083D561 /* AppDelegate.swift */,
 				41CA5A371EFC5C420083D561 /* ViewController.swift */,
@@ -296,10 +310,12 @@
 			files = (
 				41B603161F022FA00040BF44 /* TrigonometricFunctions.swift in Sources */,
 				411947B01EFCE709000228FB /* CustomView.swift in Sources */,
+				411EDE471F043990008200B1 /* CustomCircle.swift in Sources */,
 				41CA5A381EFC5C420083D561 /* ViewController.swift in Sources */,
 				41FD90E81EFC65F20013701A /* AppColors.swift in Sources */,
 				41CA5A361EFC5C420083D561 /* AppDelegate.swift in Sources */,
 				41FD90E61EFC65980013701A /* TotalExpensesViewController.swift in Sources */,
+				411EDE451F0405DF008200B1 /* LineChart3D.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

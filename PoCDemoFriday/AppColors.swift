@@ -11,7 +11,7 @@ import UIKit
 public enum AppColors: Int {
     
     // TODO: - Add/edit/delete custom colors whatever do you want or need.
-    case orange_F68621, orange_E35205, green_39B54A, blue_188CCC, blue_00A9E0, blue_5BBEFF, gray_F0F0F0,gray_444444, gray_9B9B9B, gray_CFCFCF, gray_F9F9FC, gray_D8D8D8, gray_949494, white_FFFFFF, clearColor
+    case orange_F68621, orange_E35205, green_39B54A, blue_188CCC, blue_00A9E0, blue_5BBEFF, blue_218CD4, gray_F0F0F0,gray_444444, gray_9B9B9B, gray_CFCFCF, gray_F9F9FC, gray_D8D8D8, gray_949494, white_FFFFFF, clearColor
     
     // TODO: - Add/edit/delete custom colors whatever do you want or need.
     public var color: UIColor {
@@ -21,6 +21,7 @@ public enum AppColors: Int {
         case .green_39B54A:  return UIColor.colorWithHexString("#39B54A")
         case .blue_188CCC:  return UIColor.colorWithHexString("#188CCC")
         case .blue_5BBEFF:  return UIColor.colorWithHexString("#5BBEFF")
+        case .blue_218CD4:  return UIColor.colorWithHexString("#218CD4")
         case .blue_00A9E0:  return UIColor.colorWithHexString("#00A9E0")
         case .gray_F0F0F0:  return UIColor.colorWithHexString("#F0F0F0")
         case .gray_444444:  return UIColor.colorWithHexString("#444444")

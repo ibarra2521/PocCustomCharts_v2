@@ -36,4 +36,20 @@ class TrigonometricFunctions {
         return Double(cathetusOpposite)
     }
     
+    func getAnglesStartAndEnd(angle: CGFloat) -> (start: CGFloat, end: CGFloat) {
+        let constant: CGFloat = 35
+        if angle != 180 {
+            let angleEnd = (180.0 - angle) + constant
+            let angleStart = (180.0 - angle) - (constant - 10)
+            print("angleStart: \(angleStart)")
+            print("angleEnd: \(angleEnd)")
+            return (angleStart, angleEnd)
+        } else {
+            let angleEnd = (180) + constant
+            let angleStart = (180.0) - (constant - 10)
+            print("angleStart: \(angleStart)")
+            print("angleEnd: \(angleEnd)")
+            return (angleStart, angleEnd)
+        }
+    }
 }
